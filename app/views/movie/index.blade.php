@@ -25,7 +25,7 @@
 				@foreach($movies as $movie)
 					<tr id="{{'mov_'.$movie->id}}">
 						<td>{{$movie->title}}</td>
-						<td>{{$movie->description}}</td>
+						<td>{{$movie->shortDescription()}}</td>
 
 						<td>{{$movie->category->title}} </td>
 						<td>{{$movie->rating}} <i class="fa fa-fw fa-star"></i></td>

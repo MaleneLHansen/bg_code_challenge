@@ -30,4 +30,8 @@ class Movie extends Eloquent {
 		return $this->hasMany('Comment');
 	}
 
+	public function shortDescription(){
+		return substr($this->description, 0, 50) . "...";
+	}
+
 }
