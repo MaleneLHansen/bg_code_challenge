@@ -3,8 +3,13 @@
 @section('title', 'Film')
 
 @section('content')
-
-
+	@if($message !== null)
+	<div class="col-md-12">
+		<div class="alert alert-info">
+			{{$message}}
+		</div>
+	</div>
+	@endif
 	<div class="col-md-12">
 		<a href="{{route('movie.create')}}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> Tilføj film</a>
 	</div>

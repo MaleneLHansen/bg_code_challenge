@@ -17,4 +17,9 @@ class Comment extends Eloquent {
 	 * @var array
 	 */
 
+	protected $fillable = ['title', 'body', 'name', 'movie_id'];
+
+	public function movie(){
+		return $this->belongsTo('Movie');
+	}
 }

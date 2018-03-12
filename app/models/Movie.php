@@ -27,7 +27,7 @@ class Movie extends Eloquent {
 	}
 
 	public function comments(){
-		return $this->hasMany('Comment');
+		return $this->hasMany('Comment')->where('active', 1);
 	}
 
 	public function shortDescription(){

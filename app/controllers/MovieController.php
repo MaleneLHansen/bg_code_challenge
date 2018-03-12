@@ -11,7 +11,8 @@ class MovieController extends \BaseController {
 	public function index()
 	{
 		$movies = Movie::active()->get();
-		return View::make('movie.index')->with('movies', $movies);
+		$message = Session::pull('message', null);
+		return View::make('movie.index')->with(['movies' => $movies, 'message' => $message]);
 	}
 
 
@@ -37,6 +38,7 @@ class MovieController extends \BaseController {
 	{
 		$movie = new Movie(Input::all());
 		$movie->save();
+		Session::put('message', 'Filmen blev oprettet');
 		return Redirect::route('movie.index');
 	}
 
@@ -49,7 +51,8 @@ class MovieController extends \BaseController {
 	 */
 	public function show($movie)
 	{
-		return View::make('movie.info')->with(['movie' => $movie]);
+		$message = Session::pull('message', null);
+		return View::make('movie.info')->with(['movie' => $movie, 'message' => $message]);
 	}
 
 
@@ -78,7 +81,9 @@ class MovieController extends \BaseController {
 	{
 		$movie->fill(Input::all());
 		$movie->save();
-		return Redirect::route('movie.index');	}
+		Session::put('message', 'Filmen blev opdateret');
+		return Redirect::route('movie.index');	
+	}
 
 
 	/**
