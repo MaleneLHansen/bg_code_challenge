@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', 'HomeController@showWelcome');
+Route::bind('movie', function($id){
+	return Movie::find($id);
+});
 
-// 'Route::get('/', function()
-// {
-// 	return View::make('hello');
-// });'
+Route::get('/', ['as' => 'movie.index', 'uses' => 'MovieController@index']);
+Route::get('/movie/create', ['as' => 'movie.create' ,'uses' =>'MovieController@create']);
+Route::post('/movie/create', ['as' => 'movie.store' ,'uses' =>'MovieController@store']);
+Route::get('/movie/edit/{movie}', ['as' => 'movie.edit' ,'uses' =>'MovieController@edit']);
+Route::put('/movie/edit/{movie}', ['as' => 'movie.update' ,'uses' =>'MovieController@update']);
+Route::delete('/movie/delete/{movie}', ['as' => 'movie.delete' ,'uses' =>'MovieController@destroy']);
+Route::get('movie/info/{movie}', ['as' => 'movie.info', 'uses' => 'MovieController@show']);

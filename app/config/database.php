@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'bg_code_challenge',
+			'database'  => 'homestead',
 			'username'  => 'homestead',
 			'password'  => 'secret',
 			'charset'   => 'utf8',
